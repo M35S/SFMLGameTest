@@ -6,7 +6,7 @@ This was one of 2D games I worked on during my time at university. I decided to 
 
 Below is a UML class diagram that sums up the game's main classes:
 
-![classRelationshipDiagram.png](https://github.com/M35S/SFMLGameTest/blob/main/SFML%20Github%20images/classRelationshipDiagram.png)
+![classRelationshipDiagram.png](https://github.com/M35S/SFMLGameTest/blob/main/SFML%20Github%20images/classRelationshipDiagram.PNG)
 
 This project uses C++'s containers such as:
 - Vectors: Used for containing game objects such as Players, Enemies, Bullets & Background (for parallax images).
