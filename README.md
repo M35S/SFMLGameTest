@@ -1,6 +1,6 @@
 # SFMLGame - Side Scrolling Shooter
 
-![gameplayPic.png](https://github.com/M35S/SFMLGameTest/tree/main/SFML%20Github%20images/gameplayPic.png)
+![gameplayPic.png](https://github.com/M35S/SFMLGameTest/blob/main/SFML%20Github%20images/gameplayPic.png)
 
 This was one of 2D games I worked on during my time at university. I decided to revisit this project and break it down to see how everything works together.
 
