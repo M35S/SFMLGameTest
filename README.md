@@ -1,8 +1,11 @@
 # SFMLGame - Side Scrolling Shooter
+
 ![gameplayPic.png](https://github.com/M35S/SFMLGameTest/tree/main/SFML%20Github%20images/gameplayPic.png)
+
 This was one of 2D games I worked on during my time at university. I decided to revisit this project and break it down to see how everything works together.
 
 Below is a UML class diagram that sums up the game's main classes:
+
 ![classRelationshipDiagram.png](https://github.com/M35S/SFMLGameTest/tree/main/SFML%20Github%20images/classRelationshipDiagram.png)
 
 This project uses C++'s containers such as:
@@ -37,16 +40,23 @@ With the above in mind, searching for a resource value such as a text font or sp
 
 ## Data Structures : Classes
 One of the many classes used is the Player class. Below is a UML class view table:
+
 ![playerClass.png](https://github.com/M35S/SFMLGameTest/tree/main/SFML%20Github%20images/playerClass.png)
+
 We can go into more detail of what values each member stores. This can be visualised like this:
+
 ![playerInstance1.png](https://github.com/M35S/SFMLGameTest/tree/main/SFML%20Github%20images/playerInstance1.png)
+
 ![playerInstance2.png](https://github.com/M35S/SFMLGameTest/tree/main/SFML%20Github%20images/playerInstance2.png)
+
 Doing this means we can exactly see what each class / data structure holds. 
 
 ## Program Flow
 As well as having a grasp of the game's data structures, it is important to know the flow of the program. 
 To do this, I designed a call graph diagram that illustrates what happens with certain pre & post conditions:
+
 ![callGraphFlowDiagram.png](https://github.com/M35S/SFMLGameTest/tree/main/SFML%20Github%20images/callGraphFlowDiagram.png)
+
 Producing these diagrams has enabled me to understand the current stack view of the game. 
 
 So as you can see, "game_t" is an object of "Game" from the file "Game.cpp". 
