@@ -1,20 +1,50 @@
 # SFMLGame - Side Scrolling Shooter
 
+## Contents
+- Classes: Relationships
+- Classes: Individual View
+- Classes: Object View
+- Data Structures: Containers Used
+- Data Structure: Vector
+- Data Structure: Map
+- Program Flow: Application Start
+- Program Flow: Gameplay Loop
+- Processes: Animation Setup
+- Maths: Enemy Motion Types
+
 ![gameplayPic.png](https://github.com/M35S/SFMLGameTest/blob/main/SFML%20Github%20images/gameplayPic.png)
 
 This was one of 2D games I worked on during my time at university. I decided to revisit this project and break it down to see how everything works together.
+
+## Classes: Relationships
 
 Below is a UML class diagram that sums up the game's main classes:
 
 ![classRelationshipDiagram.png](https://github.com/M35S/SFMLGameTest/blob/main/SFML%20Github%20images/classRelationshipDiagram.PNG)
 
+## Classes: Individual View
+
+One of the many classes used is the Player class. Below is a UML class view table:
+
+![playerClass.png](https://github.com/M35S/SFMLGameTest/blob/main/SFML%20Github%20images/playerClass.PNG)
+
+## Classes: Object View
+
+We can go into more detail of what values each member stores. This can be visualised like this:
+
+![playerInstance1.png](https://github.com/M35S/SFMLGameTest/blob/main/SFML%20Github%20images/playerInstance1.PNG)
+
+![playerInstance2.png](https://github.com/M35S/SFMLGameTest/blob/main/SFML%20Github%20images/playerInstance2.PNG)
+
+Doing this means we can exactly see what each class / data structure holds.
+
+## Data Structures : Containers Used
+
 This project uses C++'s containers such as:
 - Vectors: Used for containing game objects such as Players, Enemies, Bullets & Background (for parallax images).
 - Maps: Used for containing the game's resources (e.g. fonts, sprites & colours).
 
-## Data Structures : Containers
-
-### Vector
+### Data Structure: Vector
 Vector's are a popular choice for good reasons such as:
 - Number crunching: Good for removing & adding the last element as well as sorting.
 - Fast iteration: Fast for linear searching from beginning to end.
@@ -27,7 +57,7 @@ The cons however are:
 #### Suitable choices
 As we never know how many bullets the player will fire, a vector is a good container to use. 
 
-### Map
+### Data Structure: Map
 It is best to use Maps for:
 - Data access: Fast access to the values using keys.
 - Ordered: Each element is uniquely key ordered.
@@ -38,20 +68,7 @@ However, the cons are:
 #### Suitable choices
 With the above in mind, searching for a resource value such as a text font or sprite texture (i.e. value) can be done using enums (i.e. key).
 
-## Data Structures : Classes
-One of the many classes used is the Player class. Below is a UML class view table:
-
-![playerClass.png](https://github.com/M35S/SFMLGameTest/blob/main/SFML%20Github%20images/playerClass.PNG)
-
-We can go into more detail of what values each member stores. This can be visualised like this:
-
-![playerInstance1.png](https://github.com/M35S/SFMLGameTest/blob/main/SFML%20Github%20images/playerInstance1.PNG)
-
-![playerInstance2.png](https://github.com/M35S/SFMLGameTest/blob/main/SFML%20Github%20images/playerInstance2.PNG)
-
-Doing this means we can exactly see what each class / data structure holds. 
-
-## Program Flow
+## Program Flow: Application Start
 As well as having a grasp of the game's data structures, it is important to know the flow of the program. 
 To do this, I designed a call graph diagram that illustrates what happens with certain pre & post conditions:
 
@@ -62,3 +79,15 @@ Producing these diagrams has enabled me to understand the current stack view of 
 So as you can see, "game_t" is an object of "Game" from the file "Game.cpp". 
 Within "game_t", we have it's members "settings_m" and "gameWorld_m". 
 Again, we can see that "gameWorld_m" is an object of "GameState" from the file "GameState.cpp" that also contains the member "cameraControl_m".
+
+## Program Flow: Gameplay Loop
+
+INSERT PIC HERE
+
+## Processes: Animation Setup
+
+INSERT PIC HERE
+
+## Maths: Enemy Motion Types
+
+INSERT PIC HERE
