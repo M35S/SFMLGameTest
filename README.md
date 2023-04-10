@@ -10,6 +10,7 @@
 - Program Flow: Application Start
 - Program Flow: Gameplay Loop
 - Processes: Animation Setup
+- Processes: Controls Setup
 - Maths: Enemy Motion Types
 
 ![gameplayPic.png](https://github.com/M35S/SFMLGameTest/blob/main/SFML%20Github%20images/gameplayPic.png)
@@ -57,6 +58,8 @@ The cons however are:
 #### Suitable choices
 As we never know how many bullets the player will fire, a vector is a good container to use. 
 
+![bulletVectContainer.png](https://github.com/M35S/SFMLGameTest/blob/main/SFML%20Github%20images/bulletVectContainer.PNG)
+
 ### Data Structure: Map
 It is best to use Maps for:
 - Data access: Fast access to the values using keys.
@@ -67,6 +70,10 @@ However, the cons are:
 
 #### Suitable choices
 With the above in mind, searching for a resource value such as a text font or sprite texture (i.e. value) can be done using enums (i.e. key).
+
+![spriteResourceInstance.png](https://github.com/M35S/SFMLGameTest/blob/main/SFML%20Github%20images/spriteResourceInstance.PNG)
+
+![spriteFontInstance.png](https://github.com/M35S/SFMLGameTest/blob/main/SFML%20Github%20images/spriteFontInstance.PNG)
 
 ## Program Flow: Application Start
 As well as having a grasp of the game's data structures, it is important to know the flow of the program. 
@@ -82,12 +89,26 @@ Again, we can see that "gameWorld_m" is an object of "GameState" from the file "
 
 ## Program Flow: Gameplay Loop
 
-INSERT PIC HERE
+![gameLoopFlow.png](https://github.com/M35S/SFMLGameTest/blob/main/SFML%20Github%20images/gameLoopFlow.PNG)
 
 ## Processes: Animation Setup
 
-INSERT PIC HERE
+![addFrameProcess.png](https://github.com/M35S/SFMLGameTest/blob/main/SFML%20Github%20images/addFrameProcess.PNG)
+
+## Processes: Controls Setup
+
+![actionsMapView.png](https://github.com/M35S/SFMLGameTest/blob/main/SFML%20Github%20images/actionsMapView.PNG)
+
+![flagsMapView.png](https://github.com/M35S/SFMLGameTest/blob/main/SFML%20Github%20images/flagsMapView.PNG)
+
+![actionsFlagsMapView.png](https://github.com/M35S/SFMLGameTest/blob/main/SFML%20Github%20images/actionsFlagsMapView.PNG)
 
 ## Maths: Enemy Motion Types
 
-INSERT PIC HERE
+![linearMotion.png](https://github.com/M35S/SFMLGameTest/blob/main/SFML%20Github%20images/linearMotion.PNG)
+
+![circularMotion.png](https://github.com/M35S/SFMLGameTest/blob/main/SFML%20Github%20images/circularMotion.PNG)
+
+![sinusoidalMotion.png](https://github.com/M35S/SFMLGameTest/blob/main/SFML%20Github%20images/sinusoidalMotion.PNG)
+
+![quadraticMotion.png](https://github.com/M35S/SFMLGameTest/blob/main/SFML%20Github%20images/quadraticMotion.PNG)
