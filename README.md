@@ -272,14 +272,78 @@ radius = 1
 |   315 = 0.7    |    315 = -0.7  |
 |   360 = 1      |    360 = 0     |
 
+Note: Above value is: Degrees = Radians
+
 ### Sinusoidal Motion Type
 
 ![sinusoidalMotion.png](https://github.com/M35S/SFMLGameTest/blob/main/SFML%20Github%20images/sinusoidalMotion.PNG)
 
-sdfsdfds
+Enemies move in a sinewave pattern by simply using the following sine formula;
+
+```
+y = A * sin( theta )
+```
+
+Where
+
+```
+A = Amplitude
+```
+
+Note: x value is simply a linear translation movement.
+
+![sinewaveDiagram.png](https://github.com/M35S/SFMLGameTest/blob/main/SFML%20Github%20images/sinewaveDiagram.PNG)
+
+Lets go over an example:
+
+|    x           |    y           |
+| -------------- | -------------- |
+|   0            |    0 = 0       |
+|   45           |    45 = 0.7.   |
+|   90           |    90 = 1      |
+|   135          |    135 = 0.7.  |
+|   180          |    180 = 0     |
+|   225          |    225 = -0.7  |
+|   270          |    270 = -1    |
+|   315          |    315 = -0.7  |
+|   360          |    360 = 0     |
+
+![sinewaveGraph.png](https://github.com/M35S/SFMLGameTest/blob/main/SFML%20Github%20images/sinewaveGraph.PNG)
 
 ### Quadratic Motion Type
 
 ![quadraticMotion.png](https://github.com/M35S/SFMLGameTest/blob/main/SFML%20Github%20images/quadraticMotion.PNG)
 
-sdfsdfs
+Enemies move in a quadratic motion by simply using the following quadratic formula;
+
+```
+y = ax^2 + bx + c
+```
+
+Where
+
+```
+a & b = coefficients of x
+c = y intercept
+```
+
+Lets work on an example below:
+
+Example: y = x^2 - 7x + 2
+
+Working example: 
+x = 5
+y = 5^2 - 7 * 5 + 2 = -8
+
+![quadraticGraph.png](https://github.com/M35S/SFMLGameTest/blob/main/SFML%20Github%20images/quadraticGraph.PNG)
+
+|    x           |    y           |
+| -------------- | -------------- |
+|   0            |    2           |
+|   1            |    -4          |
+|   2            |    -8          |
+|   3            |    -10         |
+|   4            |    -10         |
+|   5            |    -8          |
+|   6            |    -4          |
+|   7            |    2           |
