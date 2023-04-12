@@ -9,6 +9,7 @@
 - Data Structure: Map
 - Program Flow: Application Start
 - Program Flow: Gameplay Loop
+- Program Flow: Time Per Frame (Delta Time)
 - Processes: Animation Setup
 - Processes: Controls Setup
 - Maths: Enemy Motion Types
@@ -126,6 +127,26 @@ Last but not least is drawing all of our game objects to the screen. We firstly 
 
 After rendering our game objects, we then repeat the looping process again from "Handle Events" function. 
 
+## Program Flow: Time Per Frame, TPF (Delta Time)
+
+![deltaTimeDiagram.png](https://github.com/M35S/SFMLGameTest/blob/main/SFML%20Github%20images/deltaTimeDiagram.PNG)
+
+One of the important concepts to be at least aware of is the TPF. This helps keep everything in sync with the game's frame rate such as the sprite animations & calculating positions. In the above picture, we have t1, t2 & t3; all of these are frames. In between say t1 & t2 is the TPF. In most game loops the TPF is incorporated, see the below code snippet:
+
+```
+previousTime = clock.restart();      // t1
+while( window_is_open )
+      totalTime = getElapsedTime();      // t2
+      timePerFrame = totalTime - previousTime      // t2 - t1
+      previousTime = getElapsedTime();      // t1 = t2
+      
+      ...
+      update( timePerFrame );      // t2 i.e. delta time
+      ...
+```
+
+Essentially what we are doing is finding the difference between t2 & t1. We are then using t2 (i.e. TPF) for use in our sprite animations and mathematical calculations (which will be discussed later). 
+
 ## Processes: Animation Setup
 
 ![addFrameProcess.png](https://github.com/M35S/SFMLGameTest/blob/main/SFML%20Github%20images/addFrameProcess.PNG)
@@ -150,16 +171,115 @@ When we put these actions and flags together, we get this whole control scheme c
 
 #### Pre-Condition: We press the "A" Keyboard Key.
 #### Post-Condition: We move the game's camera to the left.
-#### Process Flow: Game::handleEvents()->Game::handleInput() and Game::update(tpf)->GameState::update(tpf, ttotal)
+#### Process Flow: Game::handleEvents()->Game::handleInput() ... 
+#### Process Flow: Game::update(tpf)->GameState::update(tpf, ttotal)
 
 Within the "Handle Events" function, we poll for any key pressed events which then takes us to the "Handle Input" function. Then, within the "Set Flag" we search our map container type "actions" member for the keyboard key pressed (i.e. key value). Once the key value has been found, we then refer to our map container type "flags" member returning the enum action type (again, key value) and then set the boolean value to true (the mapped value). This signals that the camera control action has been recognised. Next, we eventually lead into GameState's "Update" function, it is here we check map container's "flags" member for any true boolean values. Any value that is true means we change the camera's position value; in this case, we set camera's x coordinate value to a minus value (e.g. cameraGame.Move( -200 * tpf ) ).
 
 ## Maths: Enemy Motion Types
 
+With all of the below motion types, with our calculations we must include the delta time (i.e. TPF). This is a key variable where it helps keep all animations and calculations in sync with the game's frame rate. 
+
+### Linear Motion Type
+
 ![linearMotion.png](https://github.com/M35S/SFMLGameTest/blob/main/SFML%20Github%20images/linearMotion.PNG)
+
+Enemies move in a straight line by simply using the following vector addition formula;
+
+```
+Vx' = Vx + Tx
+```
+
+Where 
+
+```
+Vx' = New vector x position
+Vx = Current vector x position
+Tx = Translation vector x
+```
+
+Note: Since this is a real-time application, we need our values to change as time progresses. This is where we add the TPF value within our calculations. Now we know about calculating the x coordinate, should we wish to calculate the y coordinate to implement a slope, we can use the linear equation formula y = mx + b.
+
+Example: y = 2x + 1
+
+![linearGraph1.png](https://github.com/M35S/SFMLGameTest/blob/main/SFML%20Github%20images/linearGraph1.PNG)
+
+|    x   |    y   |
+| ------ | ------ |
+|   -1   |    -1  |
+|   0    |    1   |
+|   1    |    3   |
+|   2    |    5   |
+|   3    |    7   |
+
+Example: y = 2 - (x / 2)
+
+![linearGraph2.png](https://github.com/M35S/SFMLGameTest/blob/main/SFML%20Github%20images/linearGraph2.PNG)
+
+|    x   |    y   |
+| ------ | ------ |
+|   -2   |    3   |
+|   -1   |    2.5 |
+|   0    |    2   |
+|   1    |    1.5 |
+|   2    |    1   |
+
+Note: If we want a steeper slope, y needs a bigger value change per iteration. If we want a slighty steeper slope, y needs to have a smaller value change per iteration. 
+
+### Circular Motion Type
 
 ![circularMotion.png](https://github.com/M35S/SFMLGameTest/blob/main/SFML%20Github%20images/circularMotion.PNG)
 
+Enemies move in a circular pattern by simply using the following sine & cosine formulas;
+
+```
+Vx = cos( theta ) * Vr
+Vy = sin( theta ) * Vr
+```
+
+Where
+
+```
+Vx = Vector x component
+Vy = Vector y component
+theta = angle
+Vr = Vector's radius
+```
+
+![circularDiagram2.png](https://github.com/M35S/SFMLGameTest/blob/main/SFML%20Github%20images/circularDiagram2.PNG)
+
+Note: radius in the above diagram = 1.
+
+Lets go over an example:
+
+Example: 
+x = cos( degrees ) * radius and 
+y = sin( degrees ) * radius
+
+Where 
+
+radius = 1
+
+|    x           |    y           |
+| -------------- | -------------- |
+|   0 = 1        |    0 = 0       |
+|   45 = 0.7     |    45 = 0.7.   |
+|   90 = 0       |    90 = 1      |
+|   135 = -0.7   |    135 = 0.7.  |
+|   180 = -1     |    180 = 0     |
+|   225 = -0.7   |    225 = -0.7  |
+|   270 = 0      |    270 = -1    |
+|   315 = 0.7    |    315 = -0.7  |
+|   360 = 1      |    360 = 0     |
+
+### Sinusoidal Motion Type
+
 ![sinusoidalMotion.png](https://github.com/M35S/SFMLGameTest/blob/main/SFML%20Github%20images/sinusoidalMotion.PNG)
 
+sdfsdfds
+
+### Quadratic Motion Type
+
 ![quadraticMotion.png](https://github.com/M35S/SFMLGameTest/blob/main/SFML%20Github%20images/quadraticMotion.PNG)
+
+sdfsdfs
